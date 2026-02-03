@@ -4,6 +4,3 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
-    with: 
-      boards: '["board"]'          # replace with your actual board folder name
-      shields: '["baby_split_left","baby_split_right"]'   # your left/right overlays
