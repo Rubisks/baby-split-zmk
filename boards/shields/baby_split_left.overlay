@@ -25,6 +25,7 @@
                      <&gpio1 11 GPIO_ACTIVE_HIGH>,  /* C5 */
                      <&gpio0 9  GPIO_ACTIVE_HIGH>;  /* C6 */
 
-        diode-direction = "col2row";
+        diode-direction = "row2col";
+        matrix-transform = "split-left";
     };
 };
