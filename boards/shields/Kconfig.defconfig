@@ -1,0 +1,14 @@
+if SHIELD_BABY_SPLIT_LEFT
+
+config BABY_SPLIT
+    default "Baby Split"
+
+config ZMK_SPLIT_ROLE_CENTRAl
+    default y 
+
+endif 
+
+if SHIELD_BABY_SPLIT_LEFT || SHIELD_BABY_SPLIT_RIGHT 
+config ZMK_SPLIT 
+    default y 
+endif
