@@ -27,8 +27,8 @@
                 &none        &kp N    &kp M    &kp COMMA &kp DOT  &kp SLASH &none
 
                 /* Row 4 */
-                &kp RCTRL    &kp RALT &kp LGUI &none     &kp RSHFT &kp RET
-                &kp BSPC     &kp SPACE &kp LEFT &kp UP  &kp RIGHT &kp DOWN
+                &kp RCTRL    &kp RALT &kp LGUI &none     &kp RSHFT &kp RET &none
+                &kp BSPC     &kp SPACE &kp LEFT &kp UP  &kp RIGHT &kp DOWN &none
             >;
         };
 
@@ -52,8 +52,8 @@
                 &trans &trans       &trans       &trans       &trans       &trans       &trans
 
                 /* Row 4 */
-                &trans &trans       &trans       &trans       &trans       &trans
-                &trans &trans       &trans       &trans       &trans       &trans
+                &trans &trans       &trans       &trans       &trans       &trans &trans
+                &trans &trans       &trans       &trans       &trans       &trans  &trans
             >;
         };
     };
