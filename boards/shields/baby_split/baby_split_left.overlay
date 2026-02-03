@@ -1,14 +1,8 @@
 #include "baby_split.dtsi"
 
 / {
-    chosen {
-        zmk,kscan = &kscan0;
-        zmk,split-role = "left";
-    };
 
-    kscan0: kscan0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "row2col";
+    &kscan0 {
 
         /* ROWS (5) */
         row-gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>,  /* R0 */
