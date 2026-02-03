@@ -5,12 +5,13 @@
         zmk,kscan = &kscan0;
         zmk,split-role = "right";
     };
+    
     &default_transform {
       col-offset = <7>;
     };
 
     kscan0: kscan0 {
-        compatible = "zmk,kscan-gpio-matrix";
+        compatable = "zmk,kscan-gpio-matrix";
         diode-direction = "row2col";
 
         /* ROWS (5) */
