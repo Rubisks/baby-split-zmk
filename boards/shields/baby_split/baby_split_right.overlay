@@ -1,12 +1,12 @@
 #include "baby_split.dtsi"
 
-/ {
+
     
     &keymap_transform0 {
       col-offset = <7>;
     };
 
-  &kscan0 {
+&kscan0 {
 
         /* ROWS (5) */
         row-gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>,  /* R0 */
@@ -24,5 +24,4 @@
                      <&gpio0 22 GPIO_ACTIVE_HIGH>,  /* C5 */
                      <&gpio0 20 GPIO_ACTIVE_HIGH>;  /* C6 */
 
-    };
 };
