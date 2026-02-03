@@ -3,7 +3,7 @@ if SHIELD_BABY_SPLIT_LEFT
 config BABY_SPLIT
     default "Baby Split"
 
-config ZMK_SPLIT_ROLE_CENTRAl
+config ZMK_SPLIT_ROLE_CENTRAL
     default y 
 
 endif 
