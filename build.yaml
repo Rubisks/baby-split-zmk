@@ -20,6 +20,6 @@
 ---
 include: 
   - board: nice_nano_v2
-    shields:
-      - baby_split_left
-      - baby_split_right
+    shield: baby_split_left
+  - board: nice_nano_v2
+    shield: baby_split_right
