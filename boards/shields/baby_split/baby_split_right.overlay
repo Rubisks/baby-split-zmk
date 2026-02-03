@@ -5,7 +5,7 @@
         zmk,kscan = &kscan0;
         zmk,split-role = "right";
     };
-    &default_transform{
+    &default_transform {
       col-offset = <7>;
     };
 
