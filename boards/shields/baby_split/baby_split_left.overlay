@@ -1,4 +1,6 @@
 #include "baby_split.dtsi"
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/zmk/bt.h>
 
 / {
     chosen {
@@ -13,7 +15,7 @@
                 <&gpio1 13 GPIO_ACTIVE_HIGH>,  /* R1 */
                 <&gpio1 11 GPIO_ACTIVE_HIGH>,  /* R2 */
                 <&gpio1 10 GPIO_ACTIVE_HIGH>,  /* R3 */
-                <&gpio0 9  GPIO_ACTIVE_HIGH;  /* R4 */
+                <&gpio0 9  GPIO_ACTIVE_HIGH>;  /* R4 */
 
     /* COLUMNS (7) — LEFT HALF ONLY */
     col-gpios = <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN),  /* C0 */
