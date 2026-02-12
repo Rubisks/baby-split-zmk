@@ -1,13 +1,13 @@
-if SHIELD_BABY_SPLIT_LEFT
- config BABY_SPLIT
-    string "Baby Split"
+# Check if either the left or right shield is being built
+if SHIELD_BABY_SPLIT_LEFT || SHIELD_BABY_SPLIT_RIGHT
 
+config ZMK_SPLIT
+    bool
+    default y
+
+# Only the left side should be the Central (master)
 config ZMK_SPLIT_ROLE_CENTRAL
-    bool 'y'
+    bool
+    default SHIELD_BABY_SPLIT_LEFT
 
-endif 
-
-if SHIELD_BABY_SPLIT_LEFT || SHIELD_BABY_SPLIT_RIGHT 
-    config ZMK_SPLIT 
-        bool 'y' 
 endif
