@@ -1,13 +1,17 @@
-# Check if either the left or right shield is being built
+if SHIELD_BABY_SPLIT_LEFT
+
+# Name must be less than 16 characters long!
+config ZMK_KEYBOARD_NAME
+    default "baby split"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
 if SHIELD_BABY_SPLIT_LEFT || SHIELD_BABY_SPLIT_RIGHT
 
 config ZMK_SPLIT
-    bool
     default y
-
-# Only the left side should be the Central (master)
-config ZMK_SPLIT_ROLE_CENTRAL
-    bool
-    default SHIELD_BABY_SPLIT_LEFT
 
 endif

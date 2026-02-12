@@ -1,28 +1,20 @@
 #include "baby_split.dtsi"
-#include <dt-bindings/zmk/matrix_transform.h>
-#include <dt-bindings/zmk/bt.h>
-
-/ {
-    chosen {
-        zmk,split-role = "left";
-    };
-};
 
 &default_kscan {
 
     /* ROWS (5) */
-    row-gpios = <&gpio1 15 GPIO_ACTIVE_HIGH>,  /* R0 */
-                <&gpio1 13 GPIO_ACTIVE_HIGH>,  /* R1 */
-                <&gpio1 11 GPIO_ACTIVE_HIGH>,  /* R2 */
-                <&gpio1 10 GPIO_ACTIVE_HIGH>,  /* R3 */
-                <&gpio0 9  GPIO_ACTIVE_HIGH>;  /* R4 */
+    row-gpios = <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R0 */
+                <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R1 */
+                <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R2 */
+                <&gpio1 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R3 */
+                <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* R4 */
 
     /* COLUMNS (7) — LEFT HALF ONLY */
-    col-gpios = <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* C0 */
-                <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* C1 */
-                <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* C2 */
-                <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* C3 */
-                <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* C4 */
-                <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* C5 */
-                <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* C6 */
+    col-gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>,  /* C0 */
+                <&gpio1 0 GPIO_ACTIVE_HIGH>,  /* C1 */
+                <&gpio0 24 GPIO_ACTIVE_HIGH>,  /* C2 */
+                <&gpio0 22 GPIO_ACTIVE_HIGH>,  /* C3 */
+                <&gpio0 20 GPIO_ACTIVE_HIGH>,  /* C4 */
+                <&gpio0 17 GPIO_ACTIVE_HIGH>,  /* C5 */
+                <&gpio1 6 GPIO_ACTIVE_HIGH>;  /* C6 */
 };
