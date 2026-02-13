@@ -19,7 +19,7 @@
                 /* Row 3 */
                 &mo 2        &kp Z    &kp X    &kp C    &kp V    &kp B    &kp CAPS  &none        &kp N     &kp M     &kp COMMA &kp DOT   &kp SLASH &none
                 /* Row 4 */
-                &kp RCTRL    &kp RALT &kp LGUI &none   &kp RSHFT &kp RET  &none     &none        &kp BSPC  &kp SPACE &none     &none     &none     &none
+                &kp RCTRL    &kp RALT &kp LGUI &none  &none      &kp RSHFT &kp RET  &kp BSPC     &kp SPACE &none &none     &none     &none     &none
             >;
         };
 
