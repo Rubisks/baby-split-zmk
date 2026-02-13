@@ -1,11 +1,5 @@
 #include "baby_split.dtsi"
 
-/ {
-    chosen {
-        zmk,split-role = "right";
-    };
-};
-
 /* Shift columns to the right half */
 &default_transform {
     col-offset = <7>;
