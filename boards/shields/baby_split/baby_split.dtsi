@@ -35,15 +35,4 @@
         RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)    RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11) RC(4,12) RC(4,13)
     >;
   };
-
-
-  underglow: underglow {
-    compatible = "zmk,underglow";
-    label = "Underglow LEDs";
-
-    chain-length = <35>;          // number of LEDs
-    color-mapping = <RGB>;
-
-    gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
-};
 };
