@@ -15,5 +15,5 @@
                 <&gpio1 13 GPIO_ACTIVE_HIGH>,  /* C3 */
                 <&gpio1 11 GPIO_ACTIVE_HIGH>,  /* C4 */
                 <&gpio0 10 GPIO_ACTIVE_HIGH>,  /* C5 */
-                <&gpio0 09 GPIO_ACTIVE_HIGH>;  /* C6 */
+                <&gpio0 9 GPIO_ACTIVE_HIGH>;  /* C6 */
 };
