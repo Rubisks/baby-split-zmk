@@ -9,7 +9,16 @@
 
   default_kscan: kscan{
     compatible = "zmk,kscan-gpio-matrix";
+    diode-direction = "col2row";
     wakeup-source;
+    /* ROWS (5) */
+    row-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R0 */
+                <&gpio1 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R1 */
+                <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R2 */
+                <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* R3 */
+                <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* R4 */
+
+
   };
 
 
