@@ -2,11 +2,19 @@
 
 &default_kscan {
     /* COLUMNS (7) — LEFT HALF ONLY */
-    col-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>,  /* C0 */
+   col-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>,  /* C0 */
                 <&gpio0 10 GPIO_ACTIVE_HIGH>,  /* C1 */
                 <&gpio1 11 GPIO_ACTIVE_HIGH>,  /* C2 */
                 <&gpio1 13 GPIO_ACTIVE_HIGH>,  /* C3 */
                 <&gpio1 15 GPIO_ACTIVE_HIGH>,  /* C4 */
                 <&gpio0 2 GPIO_ACTIVE_HIGH>,  /* C5 */
                 <&gpio0 29 GPIO_ACTIVE_HIGH>;  /* C6 */
+
+#    col-gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>,  /* C0 */
+#                <&gpio0 2 GPIO_ACTIVE_HIGH>,  /* C1 */
+#                <&gpio1 15 GPIO_ACTIVE_HIGH>,  /* C2 */
+#                <&gpio1 13 GPIO_ACTIVE_HIGH>,  /* C3 */
+#                <&gpio1 11 GPIO_ACTIVE_HIGH>,  /* C4 */
+#                <&gpio0 10 GPIO_ACTIVE_HIGH>,  /* C5 */
+#                <&gpio0 9 GPIO_ACTIVE_HIGH>;  /* C6 */
 };
