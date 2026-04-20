@@ -12,7 +12,7 @@
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
         flavor = "tap-preferred";
-        tappinng-terms-ms = <200>;
+        tappinng-term-ms = <200>;
         quick-tap-ms = <125>;
         bindings = <&kp>, <&kp>;
     };
@@ -62,7 +62,7 @@
 
     macros {
 
-    };
+    
 
     keymap {
         compatible = "zmk,keymap";
