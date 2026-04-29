@@ -42,19 +42,18 @@
       };
   };
   underglow_layer_0{
-      compatible = "zmk,rgb-underglow-layer-map";
-      layer-id = <0>;
-      #binging-cells = <0>;
-      // Example for the first 14 LEDs (Top Row / Numerics)
-      // Adjust these indexes to match your actual LED path!
-      colors = <
-        LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE // Left Top
-        LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE // Right Top
-        LED_GREEN LED_GREEN LED_GREEN LED_GREEN LED_GREEN              // Alphas...
-        LED_PURP LED_YEL LED_ORNG                                      // Specific keys
-       >;
+    compatible = "zmk,rgb-underglow-layer-map";
+    layer-id = <0>;
+    #binging-cells = <0>;
+    // Example for the first 14 LEDs (Top Row / Numerics)
+    // Adjust these indexes to match your actual LED path!
+    colors = <
+      LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE // Left Top
+      LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE LED_BLUE // Right Top
+      LED_GREEN LED_GREEN LED_GREEN LED_GREEN LED_GREEN              // Alphas...
+      LED_PURP LED_YEL LED_ORNG                                      // Specific keys
+    >;
   };
-
 };
 
 &pinctrl{
@@ -66,7 +65,7 @@
 
   spi3_sleep: spi3_sleep{
     group1 {
-      psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>;
+      psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>;
     };
   };
 };
