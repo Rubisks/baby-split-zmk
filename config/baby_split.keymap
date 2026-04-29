@@ -110,7 +110,7 @@
                 /* Row 2                                                                Switch Apps*/
                 &none        &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB      &kp LG(TAB)   &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
                 /* Row 3                                                   Worksp Left  Worksp Right*/
-                &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(LEFT) &kp LG(RIGHT) &kp N     &kp M     &kp COMMA &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
+                &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP) &kp LG(PG_UP) &kp N     &kp M     &kp COMMA &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
                 /* Row 4 */
                 &kp RCTRL    &kp RALT &kp LGUI &none    &mo 1    &kp RSHFT &kp RET      &kp BSPC      &kp SPACE &mo 2     &kp RA(N1)&kp RA(N2)  &kp RA(N3)  &kp RA(N4)
             >;
