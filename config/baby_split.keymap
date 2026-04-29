@@ -5,7 +5,7 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/led/led.h>
 /*defines colors for base layer */
-#define LED_BLUE  0 0 100    // Numeric
+#define LED_BLUE  240 100 50    // Numeric
 #define LED_GREEN 120 100 50 // Alpha
 #define LED_PURP  280 100 50 // Combos
 #define LED_YEL   60 100 50  // Nav/Space
@@ -44,7 +44,7 @@
   underglow_layer_0{
     compatible = "zmk,rgb-underglow-layer-map";
     layer-id = <0>;
-    #binging-cells = <0>;
+    #binding-cells = <0>;
     // Example for the first 14 LEDs (Top Row / Numerics)
     // Adjust these indexes to match your actual LED path!
     colors = <
@@ -79,7 +79,7 @@
 
     led_strip: sk6812@0 {
         compatible = "worldsemi,ws2812-spi";
-        label = "SK6812";
+        /*label = "SK6812";*/
 
         reg = <0>; 
         spi-max-frequency = <4000000>;
