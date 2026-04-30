@@ -79,25 +79,6 @@
     };
 };
 
-/ {
-    underglow_layer_map {
-        compatible = "zmk,underglow-layer-map";
-
-        // This map applies to your "base" layer (Layer 0)
-        diagnostic_map {
-            layers = <0>;
-            color-map = <
-                0  255 0   0     /* LED 0: Bright Red */
-                1  0   255 0     /* LED 1: Bright Green */
-                2  0   0   255   /* LED 2: Bright Blue */
-                3  255 255 0     /* LED 3: Yellow */
-                4  255 0   255   /* LED 4: Magenta */
-                5  0   255 255   /* LED 5: Cyan */
-                /* All other LEDs up to 34 will remain off or default */
-            >;
-        };
-    };
-};
 
 / {
     chosen{
