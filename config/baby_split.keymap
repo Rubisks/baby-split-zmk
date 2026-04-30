@@ -41,19 +41,6 @@
           bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp RET>;
       };
   };
-  underglow_layer_0{
-    compatible = "zmk,rgb-underglow-layer-map";
-    layer-id = <0>;
-    #binding-cells = <0>;
-    // Example for the first 14 LEDs (Top Row / Numerics)
-    // Adjust these indexes to match your actual LED path!
-    colors = <
-      LED_YEL   LED_BLUE  LED_BLUE  LED_BLUE  LED_BLUE  LED_BLUE LED_BLUE // Left Top
-      LED_BLUE  LED_BLUE  LED_BLUE  LED_BLUE  LED_BLUE  LED_BLUE LED_BLUE // Right Top
-      LED_GREEN LED_GREEN LED_GREEN LED_GREEN LED_GREEN LED_PURP LED_PURP // Alphas...
-      LED_PURP  LED_YEL   LED_ORNG  LED_PURP  LED_ORNG  LED_PURP LED_PURP // Specific keys
-    >;
-  };
 };
 
 &pinctrl{
@@ -89,6 +76,26 @@
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
+
+/ {
+    underglow_layer_map {
+        compatible = "zmk,underglow-layer-map";
+
+        // This map applies to your "base" layer (Layer 0)
+        diagnostic_map {
+            layers = <0>;
+            color-map = <
+                0  255 0   0     /* LED 0: Bright Red */
+                1  0   255 0     /* LED 1: Bright Green */
+                2  0   0   255   /* LED 2: Bright Blue */
+                3  255 255 0     /* LED 3: Yellow */
+                4  255 0   255   /* LED 4: Magenta */
+                5  0   255 255   /* LED 5: Cyan */
+                /* All other LEDs up to 34 will remain off or default */
+            >;
+        };
     };
 };
 
