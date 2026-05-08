@@ -46,6 +46,25 @@
   };
 
   macros{
+    // Triggers the Alt+Shift+N hotkey in Obsidian
+    dnd_npc: dnd_npc {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(LS(N))>; 
+    };
+    // Triggers the Alt+Shift+L hotkey in Obsidian
+    dnd_loc: dnd_loc {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(LS(L))>; 
+    };
+
+    // Triggers the Alt+Shift+Q hotkey in Obsidian
+    dnd_quest: dnd_quest {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(LS(Q))>;
+    };
     // macro where when shift is held enters SHFT+ENTR
     // used in text fields where enter submits text
       shft_ent: shft_ent{
@@ -128,11 +147,11 @@
                 /* Row 1 */
                 &kp GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T     &kp BSLH       &kp RBKT      &kp Y       &kp U     &kp I       &kp O       &kp P       &kp LBKT
                 /* Row 2                                                                  :Switch Apps*/
-                &mo 1        &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H       &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
+                &none        &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H       &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
                 /* Row 3                                                   Worksp Left    Worksp Right*/
                 &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP)  &kp LG(PG_DN) &kp N       &kp M     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
                 /* Row 4                                                   tap ent mt shft+ent          tap spc mt L1*/
-                &kp RCTRL    &kp RALT &kp LGUI &none    &mo 1    &kp RSHFT &ent_mt 0 RET  &kp BSPC      &lt 1 SPACE &mo 2     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
+                &kp RCTRL    &kp RALT &kp LGUI &none    &none    &kp RSHFT &ent_mt 0 RET  &kp BSPC      &lt 1 SPACE &mo 2     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
             >;
         };
         /* --------------------- LAYER 1: Function / BT / Navigation --------------------- */
@@ -155,7 +174,7 @@
             bindings = <
                 &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
                 &trans &git_add     &git_commit  &git_push    &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
-                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &kp C_MUTE &kp C_VOL_DN      &kp C_VOL_UP      &kp C_RW         &kp C_FF          &kp C_PP
+                &trans &dnd_npc     &dnd_quest   &dnd_loc     &trans       &trans       &trans &trans   &kp C_MUTE &kp C_VOL_DN      &kp C_VOL_UP      &kp C_RW         &kp C_FF          &kp C_PP
                 &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
                 &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
             >;
