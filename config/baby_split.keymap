@@ -14,6 +14,7 @@
 
 /{
   behaviors{
+    // allows for diffrent keys on press vs on tap
     mt: custom_mod_tap {
         compatible = "zmk,behavior-hold-tap";
         #binding-cells = <2>;
@@ -22,9 +23,26 @@
         quick-tap-ms = <125>;
         bindings = <&kp>, <&kp>;
     };
+    // allows for capitalizing untill space pressed
+    caps_word: caps_word{
+        compatible = "zmk,behavior-caps-word";
+        #binding-cells = <UNDERSCORE MINUS BSPC>; 
+    };
   };
 
   macros{
+    // macro where when shift is held enters SHFT+ENTR
+    // used in text fields where enter submits text
+      sft_ent: shift_enter{
+            compatible = "zmk, behavior-macro";
+            #binding-cells = <0>;
+            bindings
+              = <&macro_press &kp LSHFT>
+              , <&macro_tap &kp RET>
+              , <&macro_release &kp LSHFT>
+              ;
+      };
+      // macros for common git commands
       git_add: git_add {
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
@@ -43,7 +61,9 @@
   };
 };
 
+
 &pinctrl{
+  // sets the pin used to controll the RGB
   spi3_default: spi3_default{
     group1{
       psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>;
@@ -87,24 +107,22 @@
 
     keymap {
         compatible = "zmk,keymap";
-
         /* --------------------- BASE LAYER --------------------- */
         base {
             bindings = <
                 /* Row 0: Numbers across top */
-                &kp ESC      &kp N1   &kp N2   &kp N3   &kp N4   &kp N5    &kp DEL       &kp EQUAL     &kp N6    &kp N7    &kp N8    &kp N9      &kp N0      &kp MINUS
+                &kp ESC      &kp N1   &kp N2   &kp N3   &kp N4   &kp N5    &kp DEL        &kp EQUAL     &kp N6     &kp N7    &kp N8      &kp N9      &kp N0      &kp MINUS
                 /* Row 1 */
-                &kp GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T     &kp BSLH      &kp RBKT      &kp Y     &kp U     &kp I     &kp O       &kp P       &kp LBKT
+                &kp GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T     &kp BSLH       &kp RBKT      &kp Y      &kp U     &kp I       &kp O       &kp P       &kp LBKT
                 /* Row 2                                                                Switch Apps*/
-                &mo 1        &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB       &kp LG(TAB)   &kp H     &kp J     &kp K     &kp L       &kp SEMI    &kp SQT
+                &mo 1        &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H      &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
                 /* Row 3                                                   Worksp Left  Worksp Right*/
-                &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP) &kp LG(PG_UP) &kp N     &kp M     &kp COMMA &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
+                &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP)  &kp LG(PG_UP) &kp N      &kp M     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
                 /* Row 4 */
-                &kp RCTRL    &kp RALT &kp LGUI &none    &mo 1    &kp RSHFT &kp RET       &lt 2 BSPC    &lt 1 SPACE &mo 2     &kp RA(N1)&kp RA(N2)  &kp RA(N3)  &kp RA(N4)
+                &kp RCTRL    &kp RALT &kp LGUI &none    &mo 1    &kp RSHFT &sft_ent 0 RET &lt 2 BSPC    &lt 1 SPACE &mo 2     &kp RA(N1) &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
             >;
         };
-
-        /* --------------------- LAYER 1: Function / BT --------------------- */
+        /* --------------------- LAYER 1: Function / BT / Navigation --------------------- */
         layer_1 {
             bindings = <
                 /* Row 0 */
@@ -119,7 +137,7 @@
                 &trans &trans          &trans          &trans          &trans       &trans       &trans     &trans   &trans     &trans             &trans            &trans           &trans            &trans
             >;
         };
-
+        /* --------------------- LAYER 2: Git macros / Media Controll --------------------- */
         layer_2 {
             bindings = <
                 &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
