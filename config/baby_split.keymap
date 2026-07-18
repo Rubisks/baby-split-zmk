@@ -2,7 +2,139 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+<<<<<<< HEAD
 #include <dt-bindings/led/led.h>
+=======
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/led/led.h>
+/*defines colors for base layer */
+#define LED_BLUE  240 100 50    // Numeric
+#define LED_GREEN 120 100 50 // Alpha
+#define LED_PURP  280 100 50 // Combos
+#define LED_YEL   60 100 50  // Nav/Space
+#define LED_ORNG  30 100 50  // Mo keys
+
+
+/{
+  behaviors{
+    // allows for diffrent keys on press vs on tap
+    mt: custom_mod_tap {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+        // ammount of time untill classified as a press 
+        tapping-term-ms = <200>;
+        // When taping twice quickly ignores hold for second press
+        // increase when cant press key fast engough quick-tap-ms = <125>;
+        quick-tap-ms = <125>;
+        bindings = <&kp>, <&kp>;
+    };
+    //Allows the shft_ent Macro to be run on hold vs on tap
+    ent_mt: enter_mod_tap{
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+        // ammount of time untill classified as a press 
+        tapping-term-ms = <200>;
+        // When taping twice quickly ignores hold for second press
+        // increase when cant press key fast engough quick-tap-ms = <125>;
+        bindings = <&shft_ent>, <&kp>;
+    };
+    // allows for capitalizing untill space pressed
+    caps_word: caps_word{
+        compatible = "zmk,behavior-caps-word";
+        #binding-cells = <0>;
+        continue-list = <UNDERSCORE MINUS BSPC>; 
+    };
+  };
+
+  macros{
+    // Triggers the Alt+Shift+N hotkey in Obsidian
+    dnd_npc: dnd_npc {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(LS(N))>; 
+    };
+    // Triggers the Alt+Shift+L hotkey in Obsidian
+    dnd_loc: dnd_loc {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(LS(L))>; 
+    };
+
+    // Triggers the Alt+Shift+Q hotkey in Obsidian
+    dnd_quest: dnd_quest {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp LA(LS(Q))>;
+    };
+    // macro where when shift is held enters SHFT+ENTR
+    // used in text fields where enter submits text
+      shft_ent: shft_ent{
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LSHFT>
+              , <&macro_tap &kp RET>
+              , <&macro_release &kp LSHFT>;
+      };
+      // macros for common git commands
+      git_add: git_add {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D &kp SPACE &kp DOT &kp RET>;
+      };
+      git_commit: git_commit {
+          compatible = "zmk,behavior-macro";
+          #binding-cells = <0>;
+          bindings = <&kp G &kp I &kp T &kp SPACE &kp C &kp O &kp M &kp M &kp I &kp T &kp SPACE &kp MINUS &kp M &kp SPACE &kp DQT &kp DQT &kp LEFT>;
+      };
+      git_push: git_push {
+          compatible = "zmk,behavior-macro";
+          #binding-cells = <0>;
+          bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp RET>;
+      };
+  };
+};
+
+
+&pinctrl{
+  // sets the pin used to controll the RGB
+  spi3_default: spi3_default{
+    group1{
+      psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>;
+    };
+  };
+
+  spi3_sleep: spi3_sleep{
+    group1 {
+      psels = <NRF_PSEL(SPIM_MOSI, 0, 17)>;
+    };
+  };
+};
+
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-1 = <&spi3_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    led_strip: sk6812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        /*label = "SK6812";*/
+
+        reg = <0>; 
+        spi-max-frequency = <4000000>;
+
+        /* SK6812 Mini-E specific timing */
+        chain-length = <35>; 
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+    };
+};
+
+>>>>>>> 4d0ac6267e7772e64bc110643c0ff7bf30bf4d3f
 
 
 
@@ -12,49 +144,53 @@
  };
 /*===== Keymap ====*/
 / {
+    chosen{
+        zmk,underglow = &led_strip;
+    };
+
     keymap {
         compatible = "zmk,keymap";
-
         /* --------------------- BASE LAYER --------------------- */
         base {
             bindings = <
                 /* Row 0: Numbers across top */
-                &kp ESC      &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp DEL   &kp EQUAL       &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
+                &kp ESC      &kp N1   &kp N2   &kp N3   &kp N4   &kp N5    &kp DEL        &kp EQUAL     &kp N6      &kp N7    &kp N8      &kp N9      &kp N0      &kp MINUS
                 /* Row 1 */
-                &kp GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T    &kp NUBS  &kp RBKT     &kp Y     &kp U     &kp I     &kp O     &kp P     &kp LBKT
-                /* Row 2 */
-                &mo 1        &kp A    &kp S    &kp D    &kp F    &kp G    &kp TAB   &kp TAB      &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-                /* Row 3 */
-                &none        &kp Z    &kp X    &kp C    &kp V    &kp B    &kp CAPS  &kp EQUAL    &kp N     &kp M     &kp COMMA &kp DOT   &kp SLASH &none
-                /* Row 4 */
-                &kp RCTRL    &kp RALT &kp LGUI &none  &none      &kp RSHFT &kp RET  &kp BSPC     &kp SPACE &mo 2     &none     &none     &none     &none
+                &kp GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T     &kp BSLH       &kp RBKT      &kp Y       &kp U     &kp I       &kp O       &kp P       &kp LBKT
+                /* Row 2                                                                  :Switch Apps*/
+                &none        &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H       &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
+                /* Row 3                                                   Worksp Left    Worksp Right*/
+                &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP)  &kp LG(PG_DN) &kp N       &kp M     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
+                /* Row 4                                                   tap ent mt shft+ent          tap spc mt L1*/
+                &kp RCTRL    &kp RALT &kp LGUI &none    &none    &kp RSHFT &ent_mt 0 RET  &kp BSPC      &lt 1 SPACE &mo 2     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
             >;
         };
-
-        /* --------------------- LAYER 1: Function / BT --------------------- */
+        /* --------------------- LAYER 1: Function / BT / Navigation --------------------- */
         layer_1 {
             bindings = <
                 /* Row 0 */
-                &trans &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6 &kp F7   &kp F8     &kp F9       &kp F10      &kp F11      &kp F12      &trans
-                /* Row 1 */
-                &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans &trans   &trans     &trans       &trans       &trans       &trans       &trans
+                &trans &kp F1          &kp F2          &kp F3          &kp F4       &kp F5       &kp F6     &kp F7   &kp F8     &kp F9             &kp F10          &kp F11           &kp F12           &trans
+                /* Row 1                                                                                                        Mv Win WKSP LFT    Mv Win WKSP RGHT  Mv Win MTR LFT   MV Win MTR RGHT*/
+                &trans &out OUT_TOG    &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR &trans   &trans     &kp LS(LG(PG_UP))  &kp LS(LG(PG_DN)) &kp LS(LG(LEFT)) &kp LS(LG(RIGHT)) &trans
                 /* Row 2 */
-                &trans &bt BT_CLR   &out OUT_TOG &trans       &trans       &trans       &trans &trans   &trans     &kp LEFT     &kp UP       &kp RIGHT    &kp DOWN     &trans
-                /* Row 3 */
-                &trans &trans       &out OUT_TOG &trans       &trans       &trans       &trans &trans   &trans     &trans       &trans       &trans       &trans       &trans
+                &trans &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &trans       &trans       &trans     &trans   &trans     &kp LEFT           &kp UP            &kp RIGHT        &kp DOWN          &trans
+                /* Row 3                                                                                                        Full screen app    snap app left     snap app right*/
+                &trans &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &trans       &trans       &trans     &trans   &trans     &kp LG(UP)         &kp LG(LEFT)      &kp LG(RIGHT)    &trans            &trans
                 /* Row 4 */
-                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans       &trans       &trans       &trans       &trans
+                &trans &trans          &trans          &trans          &trans       &trans       &trans     &trans   &trans     &trans             &trans            &trans           &trans            &trans
             >;
         };
-
+        /* --------------------- LAYER 2: Git macros / Media Controll --------------------- */
         layer_2 {
             bindings = <
-                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans       &trans       &trans       &trans       &trans
-                &trans &kp F1       &kp F2       &kp F3       &kp F4       &kp F5       &kp F6 &kp F7   &kp F8     &kp F9       &kp F10      &kp F11      &kp F12      &trans
-                &trans &kp N1       &kp N2       &kp N3       &kp N4       &kp N5       &trans &trans   &kp N6     &kp N7       &kp N8       &kp N9       &kp N0       &trans
-                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans       &trans       &trans       &trans       &trans
-                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans       &trans       &trans       &trans       &trans
+                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
+                &trans &git_add     &git_commit  &git_push    &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
+                &trans &dnd_npc     &dnd_quest   &dnd_loc     &trans       &trans       &trans &trans   &kp C_MUTE &kp C_VOL_DN      &kp C_VOL_UP      &kp C_RW         &kp C_FF          &kp C_PP
+                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
+                &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
             >;
         };
     };
 };
+
+
