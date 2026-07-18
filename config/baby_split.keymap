@@ -2,7 +2,15 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/led/led.h>
 
+
+
+
+ / {
+    chosen { zmk,underglow = &led_strip; };
+ };
+/*===== Keymap ====*/
 / {
     keymap {
         compatible = "zmk,keymap";
