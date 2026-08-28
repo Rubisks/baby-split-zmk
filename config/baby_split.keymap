@@ -132,6 +132,13 @@
 };
 
 
+
+
+
+ / {
+    chosen { zmk,underglow = &led_strip; };
+ };
+/*===== Keymap ====*/
 / {
     chosen{
         zmk,underglow = &led_strip;
