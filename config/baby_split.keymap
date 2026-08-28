@@ -151,7 +151,7 @@
                 /* Row 3                                                   Worksp Left    Worksp Right*/
                 &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP)  &kp LG(PG_DN) &kp N       &kp M     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
                 /* Row 4                                                   tap ent mt shft+ent          tap spc mt L1*/
-                &kp RCTRL    &kp RALT &kp LGUI &none    &none    &kp RSHFT &ent_mt 0 RET  &kp BSPC      &lt 1 SPACE &mo 2     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
+                &kp RCTRL    &kp RALT &kp LGUI &none    &none    &kp RSHFT &ent_mt 0 RET  &kp BSPC      &kp SPACE   &mo 1     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
             >;
         };
         /* --------------------- LAYER 1: Function / BT / Navigation --------------------- */
