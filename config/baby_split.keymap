@@ -98,30 +98,8 @@
           tap-ms = <30>;  // Key hold length for taps
           bindings=
             <&macro_press &kp SPACE>
-            , <&macro_wait_time 150>
+            , <&macro_wait_time 300>
             , <&macro_release &kp SPACE>
-
-            // 2. Feathering / Staging Taps
-            , <&macro_wait_time 100>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 75>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 75>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 60>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 70>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 80>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 70>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 85>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 75>
-            , <&macro_tap &kp SPACE>
-            , <&macro_wait_time 80>
-            , <&macro_tap &kp SPACE>
             , <&macro_wait_time 70>
             , <&macro_tap &kp SPACE>
 
