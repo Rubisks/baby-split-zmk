@@ -96,10 +96,106 @@
           #binding-cells = <0>;
           wait-ms = <0>; // Small gap between key down/up
           tap-ms = <0>;  // Key hold length for taps
-          bindings=
-            <&macro_press &kp SPACE>
-            , <&macro_wait_time 1000>
-            , <&macro_release &kp SPACE>;
+          bindings
+            = <&macro_press &kp SPACE>
+            , <&macro_wait_time 151>
+            , <&macro_release &kp SPACE>
+            , <&macro_wait_time 107>
+
+            // --- Tap 2 ---
+            , <&macro_press &kp SPACE>
+            , <&macro_wait_time 77>
+            , <&macro_release &kp SPACE>
+            , <&macro_wait_time 79>
+
+            // --- Tap 3 ---
+            , <&macro_press &kp SPACE>
+            , <&macro_wait_time 65>
+            , <&macro_release &kp SPACE>
+            , <&macro_wait_time 75>
+
+            // --- Tap 4 ---
+            , <&macro_press &kp SPACE>
+            , <&macro_wait_time 71>
+            , <&macro_release &kp SPACE>
+                , <&macro_wait_time 58>
+
+                // --- Tap 5 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 77>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 68>
+
+                // --- Tap 6 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 71>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 80>
+
+                // --- Tap 7 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 65>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 69>
+
+                // --- Tap 8 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 72>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 84>
+
+                // --- Tap 9 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 56>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 73>
+
+                // --- Tap 10 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 56>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 79>
+
+                // --- Tap 11 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 62>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 67>
+
+                // --- Tap 12 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 78>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 470>
+
+                // --- Tap 13 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 77>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 267>
+
+                // --- Tap 14 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 71>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 311>
+
+                // --- Tap 15 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 65>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 538>
+
+                // --- Tap 16 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 72>
+                , <&macro_release &kp SPACE>
+                , <&macro_wait_time 1298>
+
+                // --- Tap 17 ---
+                , <&macro_press &kp SPACE>
+                , <&macro_wait_time 62>
+                , <&macro_release &kp SPACE>;
       };
   };
 };
@@ -165,7 +261,7 @@
                 /* Row 1 */
                 &kp GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T     &kp BSLH       &kp RBKT      &kp Y       &kp U     &kp I       &kp O       &kp P       &kp LBKT
                 /* Row 2                                                                  :Switch Apps*/
-                &amber_quarter  &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H       &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
+                &kp space  &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H       &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
                 /* Row 3                                                   Worksp Left    Worksp Right*/
                 &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP)  &kp LG(PG_DN) &kp N       &kp M     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
                 /* Row 4                                                   tap ent mt shft+ent          tap spc mt L1*/
