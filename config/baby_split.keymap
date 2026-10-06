@@ -96,31 +96,58 @@
           #binding-cells = <0>;
           wait-ms = <30>; // Small gap between key down/up
           tap-ms = <30>;  // Key hold length for taps
-          bindings
-             // 1. LAUNCH: Press and hold REV (Space) for countdown
-             = <&macro_press &kp SPACE>
-            , <&macro_wait_time 1350> // Hold time to hit green launch RPM
+          bindings=
+            <&macro_press &kp SPACE>
+            , <&macro_wait_time 150>
             , <&macro_release &kp SPACE>
 
-             // 2. SHIFT TO 2ND: 1st gear winds up extremely fast (~400ms)
-            , <&macro_wait_time 400>
+            // 2. Feathering / Staging Taps
+            , <&macro_wait_time 100>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 75>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 75>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 60>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 70>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 80>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 70>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 85>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 75>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 80>
+            , <&macro_tap &kp SPACE>
+            , <&macro_wait_time 70>
             , <&macro_tap &kp SPACE>
 
-            // 3. NITRO DUMP: Trigger Nitro (N) right as 2nd gear engages
-            , <&macro_wait_time 50>
-            , <&macro_tap &kp N>
-
-            // 4. SHIFT TO 3RD: Nitro accelerates 2nd gear quickly (~520ms)
-            , <&macro_wait_time 520>
+            // Engage the nitro after launch
+            ,<&macro_press &kp N>
+            // 3. Shift 1 (1st -> 2nd)
+            , <&macro_wait_time 470>
             , <&macro_tap &kp SPACE>
 
-            // 5. SHIFT TO 4TH: ~800ms window
-            , <&macro_wait_time 800>
+            // 4. Shift 2 (2nd -> 3rd)
+            , <&macro_wait_time 266>
             , <&macro_tap &kp SPACE>
 
-            // 6. SHIFT TO 5TH: Top-end pull (~1050ms)
-            , <&macro_wait_time 1050>
-            , <&macro_tap &kp SPACE>;
+            // 5. Shift 3 (3rd -> 4th)
+            , <&macro_wait_time 310>
+            , <&macro_tap &kp SPACE>
+
+            // 6. Shift 4 (4th -> 5th)
+            , <&macro_wait_time 538>
+            , <&macro_tap &kp SPACE>
+
+            // 7. Shift 5 (5th -> 6th)
+            , <&macro_wait_time 1369>
+            , <&macro_tap &kp SPACE>
+
+            , <&macro_release &kp N>;
       };
   };
 };
