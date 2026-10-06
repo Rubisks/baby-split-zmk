@@ -98,10 +98,8 @@
           tap-ms = <30>;  // Key hold length for taps
           bindings=
             <&macro_press &kp SPACE>
-            , <&macro_wait_time 800>
-            , <&macro_release &kp SPACE>
-            , <&macro_wait_time 70>
-            , <&macro_tap &kp SPACE>;
+            , <&macro_wait_time 1000>
+            , <&macro_release &kp SPACE>;
       };
   };
 };
