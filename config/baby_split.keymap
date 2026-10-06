@@ -90,6 +90,38 @@
           #binding-cells = <0>;
           bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp RET>;
       };
+
+      amber_quarter: amber_quarter {
+          compatible = "zmk,behavior-macro";
+          #binding-cells = <0>;
+          wait-ms = <30>; // Small gap between key down/up
+          tap-ms = <30>;  // Key hold length for taps
+          bindings
+             // 1. LAUNCH: Press and hold REV (Space) for countdown
+             = <&macro_press &kp SPACE>
+            , <&macro_wait_time 1350> // Hold time to hit green launch RPM
+            , <&macro_release &kp SPACE>
+
+             // 2. SHIFT TO 2ND: 1st gear winds up extremely fast (~400ms)
+            , <&macro_wait_time 400>
+            , <&macro_tap &kp SPACE>
+
+            // 3. NITRO DUMP: Trigger Nitro (N) right as 2nd gear engages
+            , <&macro_wait_time 50>
+            , <&macro_tap &kp N>
+
+            // 4. SHIFT TO 3RD: Nitro accelerates 2nd gear quickly (~520ms)
+            , <&macro_wait_time 520>
+            , <&macro_tap &kp SPACE>
+
+            // 5. SHIFT TO 4TH: ~800ms window
+            , <&macro_wait_time 800>
+            , <&macro_tap &kp SPACE>
+
+            // 6. SHIFT TO 5TH: Top-end pull (~1050ms)
+            , <&macro_wait_time 1050>
+            , <&macro_tap &kp SPACE>;
+      };
   };
 };
 
@@ -158,7 +190,7 @@
                 /* Row 3                                                   Worksp Left    Worksp Right*/
                 &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP)  &kp LG(PG_DN) &kp N       &kp M     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
                 /* Row 4                                                   tap ent mt shft+ent          tap spc mt L1*/
-                &kp RCTRL    &kp RALT &kp LGUI &none    &none    &kp RSHFT &ent_mt 0 RET  &kp BSPC      &kp SPACE   &mo 1     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
+                &kp RCTRL    &kp RALT &kp LGUI &none    &kp SPACE &kp RSHFT &ent_mt 0 RET &kp BSPC      &lt 1 SPACE &mo 1     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
             >;
         };
         /* --------------------- LAYER 1: Function / BT / Navigation --------------------- */
