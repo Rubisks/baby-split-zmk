@@ -98,34 +98,10 @@
           tap-ms = <30>;  // Key hold length for taps
           bindings=
             <&macro_press &kp SPACE>
-            , <&macro_wait_time 300>
+            , <&macro_wait_time 800>
             , <&macro_release &kp SPACE>
             , <&macro_wait_time 70>
             , <&macro_tap &kp SPACE>
-
-            // Engage the nitro after launch
-            ,<&macro_press &kp N>
-            // 3. Shift 1 (1st -> 2nd)
-            , <&macro_wait_time 470>
-            , <&macro_tap &kp SPACE>
-
-            // 4. Shift 2 (2nd -> 3rd)
-            , <&macro_wait_time 266>
-            , <&macro_tap &kp SPACE>
-
-            // 5. Shift 3 (3rd -> 4th)
-            , <&macro_wait_time 310>
-            , <&macro_tap &kp SPACE>
-
-            // 6. Shift 4 (4th -> 5th)
-            , <&macro_wait_time 538>
-            , <&macro_tap &kp SPACE>
-
-            // 7. Shift 5 (5th -> 6th)
-            , <&macro_wait_time 1369>
-            , <&macro_tap &kp SPACE>
-
-            , <&macro_release &kp N>;
       };
   };
 };
