@@ -94,8 +94,8 @@
       amber_quarter: amber_quarter {
           compatible = "zmk,behavior-macro";
           #binding-cells = <0>;
-          wait-ms = <30>; // Small gap between key down/up
-          tap-ms = <30>;  // Key hold length for taps
+          wait-ms = <0>; // Small gap between key down/up
+          tap-ms = <0>;  // Key hold length for taps
           bindings=
             <&macro_press &kp SPACE>
             , <&macro_wait_time 1000>
