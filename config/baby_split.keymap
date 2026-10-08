@@ -97,9 +97,10 @@
           wait-ms = <0>; // Small gap between key down/up
           tap-ms = <0>;  // Key hold length for taps
           bindings
-            = <&macro_press &kp SPACE>
-            , <&macro_wait_time 151>
-            , <&macro_release &kp SPACE>;
+            = <&macro_tap_time 400>
+            , <&kp SPACE>
+            , <&macro_wait_time 10>;
+
       };
   };
 };
