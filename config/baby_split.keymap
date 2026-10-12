@@ -67,41 +67,29 @@
     };
     // macro where when shift is held enters SHFT+ENTR
     // used in text fields where enter submits text
-      shft_ent: shft_ent{
+    shft_ent: shft_ent{
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &kp LSHFT>
               , <&macro_tap &kp RET>
               , <&macro_release &kp LSHFT>;
-      };
-      // macros for common git commands
-      git_add: git_add {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D &kp SPACE &kp DOT &kp RET>;
-      };
-      git_commit: git_commit {
-          compatible = "zmk,behavior-macro";
-          #binding-cells = <0>;
-          bindings = <&kp G &kp I &kp T &kp SPACE &kp C &kp O &kp M &kp M &kp I &kp T &kp SPACE &kp MINUS &kp M &kp SPACE &kp DQT &kp DQT &kp LEFT>;
-      };
-      git_push: git_push {
-          compatible = "zmk,behavior-macro";
-          #binding-cells = <0>;
-          bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp RET>;
-      };
-
-      amber_quarter: amber_quarter {
-          compatible = "zmk,behavior-macro";
-          #binding-cells = <0>;
-          wait-ms = <0>; // Small gap between key down/up
-          tap-ms = <0>;  // Key hold length for taps
-          bindings
-            = <&macro_tap_time 400>
-            , <&kp SPACE>
-            , <&macro_wait_time 10>;
-
-      };
+    };
+     // macros for common git commands
+    git_add: git_add {
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D &kp SPACE &kp DOT &kp RET>;
+    };
+    git_commit: git_commit {
+       compatible = "zmk,behavior-macro";
+       #binding-cells = <0>;
+       bindings = <&kp G &kp I &kp T &kp SPACE &kp C &kp O &kp M &kp M &kp I &kp T &kp SPACE &kp MINUS &kp M &kp SPACE &kp DQT &kp DQT &kp LEFT>;
+    };
+    git_push: git_push {
+       compatible = "zmk,behavior-macro";
+       #binding-cells = <0>;
+       bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp RET>;
+    };
   };
 };
 
@@ -144,9 +132,6 @@
 };
 
 
-
-
-
  / {
     chosen { zmk,underglow = &led_strip; };
  };
@@ -166,7 +151,7 @@
                 /* Row 1 */
                 &kp GRAVE    &kp Q    &kp W    &kp E    &kp R    &kp T     &kp BSLH       &kp RBKT      &kp Y       &kp U     &kp I       &kp O       &kp P       &kp LBKT
                 /* Row 2                                                                  :Switch Apps*/
-                &amber_quarter  &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H       &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
+                &tog 3       &kp A    &kp S    &kp D    &kp F    &kp G     &kp TAB        &kp LG(TAB)   &kp H       &kp J     &kp K       &kp L       &kp SEMI    &kp SQT
                 /* Row 3                                                   Worksp Left    Worksp Right*/
                 &kp CAPS     &kp Z    &kp X    &kp C    &kp V    &kp B     &kp LG(PG_UP)  &kp LG(PG_DN) &kp N       &kp M     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
                 /* Row 4                                                   tap ent mt shft+ent          tap spc mt L1*/
@@ -197,6 +182,21 @@
                 &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
                 &trans &trans       &trans       &trans       &trans       &trans       &trans &trans   &trans     &trans            &trans            &trans           &trans            &trans
             >;
+        };
+        layer_3{
+          bindings = <
+                /* Workman layer_3 */
+                &kp ESC      &kp N1   &kp N2   &kp N3   &kp N4   &kp N5    &kp DEL        &kp EQUAL     &kp N6      &kp N7    &kp N8      &kp N9      &kp N0      &kp MINUS
+                /* Row 1 */
+                &kp GRAVE    &kp Q    &kp W    &kp D    &kp R   &kp B      &kp BSLH       &kp RBKT      &kp J       &kp F     &kp U       &kp P       &kp SEMI    &kp LBKT
+                /* Row 2                                                                  :Switch Apps*/
+                &tog 3       &kp A    &kp S    &kp H    &kp T    &kp G     &kp TAB        &kp LG(TAB)   &kp Y       &kp N     &kp E       &kp O       &kp I       &kp SQT
+                /* Row 3                                                   Worksp Left    Worksp Right*/
+                &kp CAPS     &kp Z    &kp X    &kp M    &kp C    &kp V     &kp LG(PG_UP)  &kp LG(PG_DN) &kp K       &kp L     &kp COMMA   &kp DOT     &kp SLASH   &rgb_ug RGB_TOG
+                /* Row 4                                                   tap ent mt shft+ent          tap spc mt L1*/
+                &kp RCTRL    &kp RALT &kp LGUI &none    &kp SPACE &kp RSHFT &ent_mt 0 RET &kp BSPC      &lt 1 SPACE &mo 1     &kp RA(N1)  &kp RA(N2)  &kp RA(N3)  &kp RA(N4)
+          >;
+
         };
     };
 };
